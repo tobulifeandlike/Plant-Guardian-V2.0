@@ -3,13 +3,16 @@
 > *AI-powered plant care for people who care about their plants — but are also just really busy.*
 
 ## Background
+---
+This project started from watching my roommate struggle — her plants were always underperforming due to her packed daily work schedule and frequent missing to the optimal watering and fertilizing window.
 
-This project started from a simple observation: my roommate's plants kept dying — not from neglect by intention, but from an engineering student's schedule that made "water the plant on Tuesday" feel like a moving target.
+The root problem was twofold:
 
-The core question became: **can a mobile app reduce the cognitive overhead of plant care to near zero?**
+1. Information latency. Plant health changes gradually. Without a structured way to surface status and trigger timely reminders, issues go unnoticed until they compound.
+2. Rigid schedules work well in general, but ntot ideal for specific case. A fixed "water every 7 days" rule ignores real plant condition. What's needed is a dynamic schedule — one that adapts based on observed health trends, not just the calendar.
 
 Plant Guardian is my answer. It combines computer vision health analysis, Kalman filter-based growth prediction, and voice-driven notifications into a single, privacy-first app that runs entirely on-device — no cloud, no subscription, no data collection.
-
+---
 
 ## Target Users
 
@@ -24,7 +27,7 @@ Plant Guardian is my answer. It combines computer vision health analysis, Kalman
 
 ## Core Features
 
-### 🔬 AI Health Analysis (Vision Framework)
+### AI Health Analysis (Vision Framework)
 Analyzes plant photos through a multi-dimensional RGB pipeline:
 - **Color health scoring** — distinguishes healthy green from yellowing or browning
 - **Variegated plant recognition** — correctly identifies white/cream patterns as natural (not disease) in plants like Pothos and Snake Plants
@@ -36,7 +39,7 @@ The scoring model:
 Final Score = (Color Health × 0.5) + (Texture Health × 0.3) + (Edge Health × 0.2)
 ```
 
-### 📈 Kalman Filter Health Prediction
+### Kalman Filter Health Prediction
 Predicts 7-day plant health trajectory using a 2-state Kalman filter:
 
 ```
@@ -49,19 +52,19 @@ The filter recursively updates its estimate from historical health observations,
 
 > Inspired by Kalman filter applications in agricultural sensor fusion and MATLAB-based signal estimation techniques.
 
-### 🔊 Voice Notification System (AVSpeechSynthesizer)
+### Voice Notification System (AVSpeechSynthesizer)
 - Daily audio summary of all plant care tasks
 - Priority-ranked announcements: urgent watering → fertilizing → health alerts
 - Celebration messages on badge unlocks and watering completions
 - System sound effects (AudioServicesPlaySystemSound) for full iPad compatibility
 
-### 🌳 3D Garden Visualization (SceneKit)
+### 3D Garden Visualization (SceneKit)
 - Real-time 3D scene renders all your plants spatially
 - Dynamic position layout with boundary-clamped randomization: O(n) placement
 - Transparent background composited over SwiftUI gradient layers
 - USDZ model support for future custom plant species
 
-### 🏆 Achievement System
+### Achievement System
 8 unlockable badges with active/inactive state tracking:
 
 | Badge | Requirement |
@@ -77,13 +80,13 @@ The filter recursively updates its estimate from historical health observations,
 
 Badge state is persisted via `UserDefaults` with JSON encoding. Active/Inactive distinction reflects whether the achievement condition is *currently maintained*, not just historically achieved — encouraging consistent behavior rather than one-time unlocks.
 
-### 📋 Smart Task Management
+### Smart Task Management
 - Watering and fertilizing schedules with overdue detection
 - Urgency levels: Healthy → Soon → Urgent → Overdue
 - Batch plant selection and deletion
 - Full-text search and multi-criteria sorting
 
-### 🌤️ Environment Display
+### Environment Display
 - Simulated temperature & humidity display (mock sensor layer)
 - Toggleable °C / °F with a single tap
 - Architecture is IoT-ready: replace `MockWeatherManager` with a real weather API or CoreLocation integration
@@ -182,8 +185,11 @@ You are free to use, modify, and distribute this code for personal or commercial
 - Kalman filter theory adapted from classical control systems literature (Welch & Bishop, 1995) and agricultural sensor fusion research
 - Apple Human Interface Guidelines — the primary design reference throughout
 - Swift Student Challenge 2026 — the deadline that made this ship
-
+- My roommate and friend giving me chance to define the problem and suggestions while developing this sandbox version 
+- Opensource 3D model websites sharing free-to-use plant model
 ---
 
-*Built with SwiftUI · SceneKit · Vision · AVFoundation · SwiftData*  
+*Built with SwiftUI · SceneKit · Vision · AVFoundation · SwiftData*
+*With pure love to the world*
 *Developed for Swift Student Challenge 2026*
+*Applicable version v3.0 is released as soon as possible* 
