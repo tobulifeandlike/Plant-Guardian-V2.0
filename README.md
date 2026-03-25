@@ -190,6 +190,9 @@ You are free to use, modify, and distribute this code for personal or commercial
 ---
 
 *Built with SwiftUI · SceneKit · Vision · AVFoundation · SwiftData*
+
 *With pure love to the world*
+
 *Developed for Swift Student Challenge 2026*
+
 *Applicable version v3.0 is released as soon as possible* 
